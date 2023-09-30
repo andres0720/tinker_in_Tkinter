@@ -28,7 +28,7 @@ file_menu.add_command(label="Save", command=file_save)
 file_menu.add_separator()
 file_menu.add_command(label="Exit", command=file_exit)
 
-def add_task():
+def add_task(event=None):
     task = entry.get()
     if task:
         tasks.append(task)
@@ -43,18 +43,19 @@ def remove_task():
         tasks.pop(selected_task_index)
         
 buttonframe = tk.Frame(root)
-buttonframe.pack(padx=5, pady=5)
+buttonframe.pack(padx=5,)
 
 entry = tk.Entry(root, font=('arial', 12))
 entry.pack(padx=5, pady=5)
 
+entry.bind('<Return>', add_task)
 
 #create "Add Task Button"
-btn1 = tk.Button(buttonframe, text='Add Task', font=('arial', 11), command=add_task)
+btn1 = tk.Button(buttonframe, text='Add Task', font=('arial', 11), command=add_task, fg='blue', bg='#FF9D88')
 btn1.pack(side="left", pady=10)
 
 #Create the "Remove Task" button and associate the remove_task function with it
-btn2 = tk.Button(buttonframe, text="Remove Task", font=('arial', 11), command=remove_task)
+btn2 = tk.Button(buttonframe, text="Remove Task", font=('arial', 11), command=remove_task, fg='blue', bg='#FF9D88')
 btn2.pack(side="left")
 
 #display the task List box
